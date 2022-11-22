@@ -7,13 +7,26 @@
 
 .tile{
 
-  background-color: green;
   height: 9vh;
   width: 9vh;
   margin: 1px;
 }
 
+body{
+  margin: 0;
+
+}
+
 
 .river{
   background-color: blue;
+}
+
+.forest{
+  background-color: green;
+}
+
+
+.fire{
+  background-color: red;
 }
