@@ -1,0 +1,19 @@
+.row{
+
+  display:flex;
+
+}
+
+
+.tile{
+
+  background-color: green;
+  height: 9vh;
+  width: 9vh;
+  margin: 1px;
+}
+
+
+.river{
+  background-color: blue;
+}
