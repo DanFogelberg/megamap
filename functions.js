@@ -9,10 +9,7 @@ const changeType = (tile, newTile = false) => {
   if (newTile === false) {
     tile.classList.add(nextTile);
     tile.dataset.type = nextTile;
-    arrayIndex = Math.floor(Math.random() * tileTypes.length);
-    nextTile = tileTypes[arrayIndex];
-    removeTypes(infoTile);
-    infoTile.classList.add(nextTile);
+    setNewTile();
   } else {
     tile.classList.add(newTile);
     tile.dataset.type = newTile;
@@ -89,5 +86,20 @@ const activate = (tile) => {
 const spreadFire = (tile) => {
   if (tile.dataset.type != 'river') {
     changeType(tile, 'fire');
+  }
+};
+
+const setNewTile = () => {
+  arrayIndex = Math.floor(Math.random() * tileTypes.length);
+  nextTile = tileTypes[arrayIndex];
+  removeTypes(infoTile);
+  infoTile.classList.add(nextTile);
+
+  if (tileTypes[arrayIndex] === 'fire') {
+    infoText.textContent = 'The fire burns hot!';
+  } else if (tileTypes[arrayIndex] === 'forest') {
+    infoText.textContent = 'The forest is very calm.';
+  } else if (tileTypes[arrayIndex] === 'river') {
+    infoText.textContent = 'The river dances.';
   }
 };

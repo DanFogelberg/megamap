@@ -4,18 +4,9 @@ const mapWidth = 20;
 
 const body = document.querySelector('body');
 const footer = document.querySelector('footer');
-const infoBar = document.createElement('section');
-infoBar.classList.add('info-bar');
 
-const infoTile = document.createElement('div');
-infoTile.classList.add('info-tile');
-infoTile.classList.add('tile');
-infoTile.classList.add('forest');
-
-let arrayIndex = Math.floor(Math.random() * tileTypes.length);
-let nextTile = tileTypes[arrayIndex];
+//Starting tile = forest. For now.
 initialTile = tileTypes[0];
-console.log(nextTile);
 
 //Create map
 let map = [];
@@ -46,8 +37,24 @@ for (let i = 0; i < mapHeight; i++) {
   }
 }
 
-footer.prepend(infoBar);
-infoBar.append(infoTile);
+//Create UI-elements and put them in footer
+//Info Tile
+const infoTile = document.createElement('div');
+infoTile.classList.add('info-tile');
+infoTile.classList.add('tile');
 
-//Every 5 seconds all the tiles might do something.
+footer.append(infoTile);
+//Info Background
+const infoBackground = document.createElement('div');
+infoBackground.classList.add('info-background');
+footer.append(infoBackground);
+//Info text
+const infoText = document.createElement('p');
+infoText.classList.add('info-text');
+infoText.textContent = 'Hej Bengan';
+infoBackground.append(infoText);
+
+setNewTile(); //Randomize starting tile
+
+//Recursive function. Every tick fire might spread, trees might grow etc
 tick();

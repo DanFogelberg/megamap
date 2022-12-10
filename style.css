@@ -29,6 +29,26 @@ body {
   height: var(--tile-height);
 
   margin: 0px;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.info-tile {
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.info-background {
+  background-color: black;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.info-text {
+  color: var(--fire-color);
 }
 
 footer {
@@ -36,6 +56,8 @@ footer {
   font-variation-settings: 'wght' var(--info-text-font-weight);
   position: fixed;
   bottom: 0px;
+  display: flex;
+  width: 100%;
 }
 
 .river {
