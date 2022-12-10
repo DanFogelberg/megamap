@@ -1,12 +1,11 @@
-INSERT MANDATORY GIF
+# Megamap
+The website consists of a grid of tiles which you can change the type of. Some tiles have special effects such as fire spreading. You can paint the map as you like, but there is no goal so it is quite useless.
 
-# Project Title
+useless-web-dan.netlify.app
 
-Text about the project. This would also be a great place to link the game on Netlify.
 
 # Installation
-
-Add the installation instructions.
+Download files and run index.html.
 
 # Code Review
 
