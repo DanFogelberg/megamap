@@ -1,32 +1,49 @@
-.row{
+:root {
+  --fire-color: brown;
+  --water-color: rgb(0, 6, 110);
+  --forest-color: rgb(19, 103, 0);
 
-  display:flex;
+  --info-text-font-family: 'Inter';
+  --info-text-font-weight: 600;
 
+  --tile-height: 5vw;
+  --tile-width: 5vw;
 }
 
-
-.tile{
-
-  height: 9vh;
-  width: 9vh;
-  margin: 1px;
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter-Variable'),
+    url('./fonts/Inter-Variable.woff2') format('woff2');
 }
 
-body{
+body {
   margin: 0;
-
 }
 
-
-.river{
-  background-color: blue;
+.row {
+  display: flex;
 }
 
-.forest{
-  background-color: green;
+.tile {
+  width: var(--tile-width);
+  height: var(--tile-height);
+
+  margin: 0px;
 }
 
+footer {
+  font-family: var(--info-text-font-family);
+  font-variation-settings: 'wght' var(--info-text-font-weight);
+}
 
-.fire{
-  background-color: red;
+.river {
+  background-color: var(--water-color);
+}
+
+.forest {
+  background-color: var(--forest-color);
+}
+
+.fire {
+  background-color: var(--fire-color);
 }
