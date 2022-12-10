@@ -44,11 +44,12 @@ body {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .info-text {
   color: var(--fire-color);
+  margin: 20px;
 }
 
 footer {
@@ -63,11 +64,16 @@ footer {
 .river {
   background-color: var(--water-color);
 }
-
 .forest {
   background-color: var(--forest-color);
 }
-
 .fire {
   background-color: var(--fire-color);
+}
+
+/* Hide mouse over info on mobile */
+@media screen and (max-width: 768px) {
+  .info-text:nth-child(2) {
+    display: none;
+  }
 }

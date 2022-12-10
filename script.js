@@ -28,6 +28,7 @@ for (let i = 0; i < mapHeight; i++) {
       'click',
       changeType.bind(null, map[i][j], false)
     );
+    map[i][j].addEventListener('mouseover', getTileInfo.bind(null, map[i][j]));
 
     map[i][j].dataset.type = initialTile;
     map[i][j].dataset.y = i;
@@ -49,10 +50,13 @@ const infoBackground = document.createElement('div');
 infoBackground.classList.add('info-background');
 footer.append(infoBackground);
 //Info text
-const infoText = document.createElement('p');
-infoText.classList.add('info-text');
-infoText.textContent = 'Hej Bengan';
-infoBackground.append(infoText);
+const infoNextTile = document.createElement('p');
+infoNextTile.classList.add('info-text');
+infoBackground.append(infoNextTile);
+
+const infoMousedTile = document.createElement('p');
+infoMousedTile.classList.add('info-text');
+infoBackground.append(infoMousedTile);
 
 setNewTile(); //Randomize starting tile
 

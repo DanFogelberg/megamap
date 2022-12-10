@@ -1,9 +1,7 @@
 //Switches type of tile to new type
 const changeType = (tile, newTile = false) => {
-  console.log(tile);
   removeTypes(tile);
   // tile.dataset.cooldown = true; //Potenial problem if happens on tiles that haven't actually changed type
-  console.log(newTile);
 
   //If function is called without a specific tile, gets tile from stack
   if (newTile === false) {
@@ -14,6 +12,8 @@ const changeType = (tile, newTile = false) => {
     tile.classList.add(newTile);
     tile.dataset.type = newTile;
   }
+
+  getTileInfo(tile); //Update description to match the now changed tile, as mousover won't be triggered again.
 };
 
 //Unset tile
@@ -27,59 +27,55 @@ const removeTypes = (tile) => {
 const tick = () => {
   map.forEach((row) => {
     row.forEach((tile) => {
-      console.log(tile.dataset.cooldown);
-      if (tile.dataset.cooldown == 'true') {
-        tile.dataset.cooldown = false;
-      } else {
-        activate(tile);
-      }
+      activate(tile);
     });
   });
   setTimeout(tick, 5000);
 };
 
 const activate = (tile) => {
-  switch (tile.dataset.type) {
+  switch (
+    tile.dataset.type //Different tiles have different effects. Should probably be separate functions to make it easier to read.
+  ) {
     case 'fire': //Fire spreads to surrounding squares. Blocked by water.
       if (Math.random() > 0.2) break; //20% chance of fire spreading
 
       const direction = Math.random();
       let targetTile;
       if (direction < 0.25) {
-        console.log('right');
+        //Right
         if (parseInt(tile.dataset.x) + 1 > mapWidth - 1) break;
         targetTile =
-          map[parseInt(tile.dataset.y)][1 + parseInt(tile.dataset.x)]; //Right
+          map[parseInt(tile.dataset.y)][1 + parseInt(tile.dataset.x)];
       } else if (direction < 0.5) {
-        console.log('down');
+        //Down
         if (parseInt(tile.dataset.y) + 1 > mapHeight - 1) break;
         targetTile =
-          map[1 + parseInt(tile.dataset.y)][parseInt(tile.dataset.x)]; //Down
+          map[1 + parseInt(tile.dataset.y)][parseInt(tile.dataset.x)];
       } else if (direction < 0.75) {
-        console.log('left');
+        //Left
+
         if (parseInt(tile.dataset.x) - 1 < 0) break;
         targetTile =
-          map[parseInt(tile.dataset.y)][parseInt(tile.dataset.x) - 1]; //Left
+          map[parseInt(tile.dataset.y)][parseInt(tile.dataset.x) - 1];
       } else {
-        console.log('up');
+        //Up
+
         if (parseInt(tile.dataset.y) - 1 < 0) break;
         targetTile =
-          map[parseInt(tile.dataset.y) - 1][parseInt(tile.dataset.x)]; //Up
+          map[parseInt(tile.dataset.y) - 1][parseInt(tile.dataset.x)];
       }
       spreadFire(targetTile);
-      console.log(map[parseInt(tile.dataset.y)][1 + parseInt(tile.dataset.x)]);
 
       break;
     case 'forest':
-      //console.log("Skoga");
-      //Växer till större skog och ibland sprids det småskog
+      //Could perhaps grow into larger forests and spread. Perhaps only grows adjacent to water.
       break;
 
     case 'river':
-    //console.log("Det rinner långsamt.");
-    //Kanske rinner floden ibland? Oklart.
+      //Perhaps masses of water flow towards one another?
+      break;
     default:
-    // code block
   }
 };
 
@@ -96,10 +92,27 @@ const setNewTile = () => {
   infoTile.classList.add(nextTile);
 
   if (tileTypes[arrayIndex] === 'fire') {
-    infoText.textContent = 'The fire burns hot!';
+    infoNextTile.textContent = 'The fire burns hot!';
   } else if (tileTypes[arrayIndex] === 'forest') {
-    infoText.textContent = 'The forest is very calm.';
+    infoNextTile.textContent = 'The forest is very calm.';
   } else if (tileTypes[arrayIndex] === 'river') {
-    infoText.textContent = 'The river dances.';
+    infoNextTile.textContent = 'The river dances.';
+  }
+};
+
+const getTileInfo = (tile) => {
+  switch (tile.dataset.type) {
+    case 'forest':
+      infoMousedTile.textContent = 'This forest looks real cozy.';
+      break;
+
+    case 'fire':
+      infoMousedTile.textContent = 'There is a fire burning here!';
+      break;
+    case 'river':
+      infoMousedTile.textContent = 'The water is incredibly blue.';
+      break;
+    default:
+      console.log('No info for this type of tile?');
   }
 };
