@@ -1,8 +1,9 @@
 const tileTypes = ['forest', 'river', 'fire'];
-const mapHeight = 10;
+const mapHeight = 100;
 const mapWidth = 20;
 
 const body = document.querySelector('body');
+const footer = document.querySelector('footer');
 const infoBar = document.createElement('section');
 infoBar.classList.add('info-bar');
 
@@ -45,7 +46,7 @@ for (let i = 0; i < mapHeight; i++) {
   }
 }
 
-body.append(infoBar);
+footer.prepend(infoBar);
 infoBar.append(infoTile);
 
 //Every 5 seconds all the tiles might do something.

@@ -34,6 +34,8 @@ body {
 footer {
   font-family: var(--info-text-font-family);
   font-variation-settings: 'wght' var(--info-text-font-weight);
+  position: fixed;
+  bottom: 0px;
 }
 
 .river {
