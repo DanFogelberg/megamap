@@ -19,5 +19,7 @@ Download files and run index.html.
 
 Tested by the following people:
 
-1. Jane Doe
-2. John Doe
+1. Magnus Vargvinter
+2. Emma Hedlund
+3. Axel Enghamre
+4. Tommi Uutisalo
